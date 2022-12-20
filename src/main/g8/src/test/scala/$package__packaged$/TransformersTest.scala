@@ -9,7 +9,7 @@ import org.apache.spark.sql.Row
 import Transformers._
 
 class TransformersTest
-    extends FunSpec
+    extends AnyFunSpec
     with SparkSessionTestWrapper
     with DataFrameComparer {
 

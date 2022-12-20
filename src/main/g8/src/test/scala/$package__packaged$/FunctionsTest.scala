@@ -9,7 +9,7 @@ import org.apache.spark.sql.Row
 import Functions._
 
 class FunctionsTest
-    extends FunSpec
+    extends AnyFunSpec
     with SparkSessionTestWrapper
     with ColumnComparer {
 
