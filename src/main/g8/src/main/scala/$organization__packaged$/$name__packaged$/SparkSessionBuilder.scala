@@ -13,5 +13,7 @@ trait SparkSessionBuilder extends Serializable {
     .config("hive.metastore.uris", "thrift://localhost:9083")
     .enableHiveSupport()
     .getOrCreate()
+    
+  lazy val sc = spark.sparkContext
 
 }
