@@ -1,6 +1,7 @@
 package $package$
 
 import org.apache.spark.graphx._
+import org.apache.spark.SparkContext._
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.{functions => F}

@@ -9,15 +9,17 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.apache.spark"    %% "spark-core"         % "$sparkVersion$",
-  "org.apache.spark"    %% "spark-sql"          % "$sparkVersion$",
-  "org.apache.spark"    %% "spark-hive"         % "$sparkVersion$",
+  "org.apache.spark"    %% "spark-core"         % "$sparkVersion$"  %  "provided",
+  "org.apache.spark"    %% "spark-sql"          % "$sparkVersion$"  %  "provided",
+  "org.apache.spark"    %% "spark-hive"         % "$sparkVersion$"  %  "provided",
   "org.apache.spark"    %% "spark-graphx"       % "$sparkVersion$",
   "com.chuusai"         %% "shapeless"          % "2.3.10",
   "com.github.scopt"    %% "scopt"              % "4.1.0",
   "org.scalatest"       %% "scalatest"          % "3.2.14" % Test,
   "com.github.mrpowers" %% "spark-fast-tests"   % "1.3.0"  % Test
 )
+
+assemblyJarName in assembly := "$name;format="lower"$-fatjar-$version$.jar"
 
 assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
