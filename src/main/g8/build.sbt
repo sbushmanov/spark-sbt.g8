@@ -15,11 +15,11 @@ libraryDependencies ++= Seq(
   "org.apache.spark"    %% "spark-graphx"       % "$sparkVersion$",
   "com.chuusai"         %% "shapeless"          % "2.3.10",
   "com.github.scopt"    %% "scopt"              % "4.1.0",
-  "org.scalatest"       %% "scalatest"          % "3.2.14" % Test,
+  "org.scalatest"       %% "scalatest"          % "3.2.15" % Test,
   "com.github.mrpowers" %% "spark-fast-tests"   % "1.3.0"  % Test
 )
 
-assemblyJarName in assembly := "$name;format="lower"$-fatjar-$version$.jar"
+assembly /assemblyJarName := "$name;format="lower"$-fatjar-$version$.jar"
 
 assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
@@ -28,7 +28,8 @@ assembly / assemblyMergeStrategy := {
 
 
 // test suite settings
-fork in Test := true
-javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")
+Test / fork := true
 // Show runtime of tests
-testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oD")
+Test / testOptions  += Tests.Argument(TestFrameworks.ScalaTest, "-oD")
+
+javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")

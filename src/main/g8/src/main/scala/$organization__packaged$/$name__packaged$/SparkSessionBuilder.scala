@@ -4,7 +4,7 @@ import org.apache.spark.sql.SparkSession
 
 trait SparkSessionBuilder extends Serializable {
 
-  lazy val spark = SparkSession.builder()
+  lazy val spark: SparkSession = SparkSession.builder()
     .master("local[8]")
     .appName("MyApp")
     .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
@@ -14,6 +14,6 @@ trait SparkSessionBuilder extends Serializable {
     .enableHiveSupport()
     .getOrCreate()
     
-  lazy val sc = spark.sparkContext
+  lazy val sc: SparkContext = spark.sparkContext
 
 }
