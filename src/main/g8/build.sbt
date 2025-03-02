@@ -1,21 +1,19 @@
-name := "$name$"
-
-version := "$version$"
-
-scalaVersion := "$scalaVersion$"
+ThisBuild / name := "$name$"
+ThisBuild / version := "$version$"
+ThisBuild / scalaVersion := "$scalaVersion$"
 
 resolvers ++= Seq(
   "apache-snapshots" at "https://repository.apache.org/snapshots/"
 )
 
 libraryDependencies ++= Seq(
-  "org.apache.spark"    %% "spark-core"         % "$sparkVersion$"  %  "provided",
-  "org.apache.spark"    %% "spark-sql"          % "$sparkVersion$"  %  "provided",
-  "org.apache.spark"    %% "spark-hive"         % "$sparkVersion$"  %  "provided",
+  "org.apache.spark"    %% "spark-core"         % "$sparkVersion$",
+  "org.apache.spark"    %% "spark-sql"          % "$sparkVersion$",
+  "org.apache.spark"    %% "spark-hive"         % "$sparkVersion$",
   "org.apache.spark"    %% "spark-graphx"       % "$sparkVersion$",
-  "com.chuusai"         %% "shapeless"          % "2.3.10",
+  "com.chuusai"         %% "shapeless"          % "2.3.12",
   "com.github.scopt"    %% "scopt"              % "4.1.0",
-  "org.scalatest"       %% "scalatest"          % "3.2.15" % Test,
+  "org.scalatest"       %% "scalatest"          % "3.2.19" % Test,
   "com.github.mrpowers" %% "spark-fast-tests"   % "1.3.0"  % Test
 )
 
@@ -32,4 +30,4 @@ Test / fork := true
 // Show runtime of tests
 Test / testOptions  += Tests.Argument(TestFrameworks.ScalaTest, "-oD")
 
-javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")
+javaOptions ++= Seq("-Xms512M", "-Xmx2048M")
